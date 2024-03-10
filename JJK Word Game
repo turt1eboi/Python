@@ -1,0 +1,74 @@
+import random
+
+#JJK wordGuessing
+def wordGuessing():
+    # create the lists and variables
+    randPhrases = ["Sukuna used his domain expansion on you", "Gojo used his purple Hollow but you were caught in the line of fire", "Choso forgot that you were his brother"]
+    words = ["gojo", "five5", "something"]
+    guess = []
+    totalGuess = 5
+    trackCorrect = 0
+    index = random.choice(words)
+    specialSpeech = False
+    #creates the empty guessing list
+    for x in range(len(index)):
+        guess.append("_ ")
+    #begin guessing
+    while totalGuess != 0:
+        print(*guess)
+        print("Enter a letter:")
+        letterInput = input()
+        count = 0
+        #checks the guess
+        for x in range(len(index)):
+            if ((index[x] == letterInput) and (guess[x] != letterInput)):
+                guess[x] = letterInput
+                count += 1
+                trackCorrect += 1
+        #-1 guess if player doesn't right
+        if count == 0:
+            totalGuess -= 1
+            print(random.choice(randPhrases))
+        #Checks if play guessed all the letters
+        if trackCorrect == len(index):
+            break;
+        if (totalGuess == 1) and (specialSpeech == False):
+            specialSpeech = True
+            print("\n" * 100)
+            print("When the player reached one remaining guess, the game finally came to ask")
+            input()
+            print("\"What if you get the last question wrong?\"")
+            input()
+            print("The player responded")
+            input()
+            print("\"If I get this next one wrong, it might give me a litttle trouble.\"")
+            input()
+            print("But would you lose?")
+            input()
+            print("\n" * 100)
+            print("Nah, I'd win")
+            print("\n" * 5)
+            input()
+    if totalGuess != 0:
+        print("You have been accepted into JuJitsu Tech")
+    else:
+        print("\n" * 100)
+        print("NOOOOOO! You were meant to be the next Jujitsu Kaisener")
+        print("\n" * 5)
+  
+
+print("You are about to take you test to become the next JuJitsu Kaisener")
+userInput = input("Are you ready?(y/n)")
+
+while True:
+    if userInput == "y":
+        print("\n" * 1000)
+        print("I am proud of you.  It is time to make our glorious prince proud.")
+        wordGuessing()
+        break;
+    elif userInput == "n":
+        print("You failed Gojo senpai...how could you.")
+        break;
+    else:
+        print("Gojo says to type \"y\" or \"n\"")
+        userInput = input("I\'ll give you another chance")
